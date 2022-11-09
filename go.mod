@@ -1,3 +1,3 @@
-module github.com/hugofy/hugofy-modules
+module github.com/hugofy/hugofy
 
 go 1.19

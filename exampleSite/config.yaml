@@ -1,0 +1,14 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: Example Site
+
+module:
+  imports:
+  - path: github.com/hugofy/blog
+    disable: false
+    mounts:
+    - source: content
+      target: content
+    - source: layouts
+      target: layouts
+  - path: github.com/hugofy/hugofy

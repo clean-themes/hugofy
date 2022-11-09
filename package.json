@@ -1,0 +1,36 @@
+{
+  "name": "hugofy",
+  "version": "1.0.0",
+  "description": "A general purpose Hugo theme for blogging, portfolio, docs etc.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently npm:watch:*",
+    "watch:tw": "tailwindcss -i ./assets/css/main.css -o ./assets/css/style.css --watch",
+    "watch:hugo": "hugo server -s exampleSite --disableFastRender",
+    "build": "hugo --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.x",
+    "@tailwindcss/forms": "^0.x",
+    "@tailwindcss/line-clamp": "^0.x",
+    "@tailwindcss/typography": "^0.5.x",
+    "concurrently": "^7.x",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.x",
+    "postcss-cli": "^10.0.0",
+    "tailwindcss": "^3.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/hugofy/hugofy"
+  },
+  "keywords": [
+    "Hugo",
+    "TailwindCSS",
+    "Blog",
+    "Portfolio",
+    "Docs"
+  ],
+  "author": "Emruz Hossain",
+  "license": "MIT"
+}
