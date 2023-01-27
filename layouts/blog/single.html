@@ -1,0 +1,53 @@
+{{define "main"}}
+{{ $currentPage:= . }}
+{{ $isSeries:=false}}
+{{ $series:= . }}
+{{ range where site.Pages "Type" "series" }}
+  {{ if .IsAncestor $currentPage }}
+    {{$series = . }}
+    {{ $isSeries = true }}
+  {{ end }}
+{{ end }}
+
+{{ $title:= "Related Posts"}}
+{{ $pages:=slice}}
+
+{{ if $isSeries }}
+    {{ $title = "In this Series"}}
+    {{ $pages = where $series.Pages "BundleType" "leaf" }}
+{{ else }}
+  {{ $pages = (where (site.RegularPages.Related $currentPage ) "Type" "blog") | first 10 }}
+{{ end }}
+{{ partial "navigation/breadcrumb.html" . }}
+<div class="flex">
+  <aside class="basis-1/4 px-4 py-2 min-h-screen print:hidden transition-all duration-300 relative left-0" id="left-sidebar">
+    <div class="w-72 ml-auto mt-4 sticky top-20 text-lg font-bold text-gray-700 transition-all duration-300">
+        <h1 class="text-white hover:text-white bg-cyan-500 title-text  pl-2">{{ $title }}</h1>
+        <ul class="p-2 pt-1 font-normal bg-slate-100">
+            {{ range $pages }}
+                {{$post:= slice "my-2 pl-2 w-full hover:text-cyan-500"}}
+                {{ if eq $currentPage . }}
+                    {{$post = $post | append "text-cyan-500"}}
+                {{ end }}
+                <li class="{{delimit $post " "}}"><a href="{{.RelPermalink}}">{{ .Title }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+  </aside>
+  <div class="basis-2/4 flex-auto border-x transition-all duration-300">
+    <div class="m-6 text-5xl text-cyan-800">
+      <h1>{{ .Title }}</h1>
+    </div>
+    
+    <article class="m-6 max-w-none prose prose-lg">
+      {{ .Content }}
+    </article>
+  </div>
+
+  <aside class="basis-1/4 px-4 min-h-screen print:hidden transition-all duration-300 relative right-0" id="right-sidebar">
+    {{ partial "navigation/toc.html" . }}
+  </aside>
+  {{ partial "navigation/page-utilities.html" . }}
+</div>
+
+{{end}}

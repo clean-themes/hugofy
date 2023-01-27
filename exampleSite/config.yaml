@@ -1,14 +1,42 @@
 baseURL: http://example.org/
 languageCode: en-us
 title: Example Site
+disableKinds: ["taxonomy","taxonomyTerm"]
 
 module:
   imports:
-  - path: github.com/hugofy/blog
-    disable: false
-    mounts:
-    - source: content
-      target: content
-    - source: layouts
-      target: layouts
   - path: github.com/hugofy/hugofy
+  # - path: github.com/hugofy/blog
+  #   disable: false
+  #   mounts:
+  #   - source: content
+  #     target: content
+  #   - source: layouts
+  #     target: layouts
+
+  # Allow raw html in markdown file
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 6
+    ordered: false
+
+taxonomies:
+  category: categories
+  series: series
+  tag: tags
+
+related:
+  threshold: 80
+  includeNewer: true
+  toLower: true
+  indices:
+  - name: categories
+    weight: 100
+  - name: tags
+    weight: 80
+  - name: date
+    weight: 10

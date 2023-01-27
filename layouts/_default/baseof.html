@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html lang='{{ .Site.LanguageCode }}'>
-{{ partial "head.html" . }}
+<html lang="{{ .Language.Lang }}" class="scroll-smooth scroll-pt-16">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body class="bg-white overflow-x-hidden">
+      {{/*  ============== Header block  =============*/}}
+      {{ block "header" . }}
+        {{ partial "navigation/top-navbar.html" . }}
+        {{ partial "navigation/settings.html"}}
+      {{end}}
+      {{/*  =============== Main block =====================  */}}
+      {{ block "main" . }} {{ end }}
 
-<body class="flex flex-col min-h-screen">
-    {{/*  {{- partial "dev/dev-tools.html" . -}}  */}}
-    {{- partial "header.html" . -}}
-    <main class="flex-1 mx-4 md:mx-12 lg:mx-24 mt-4 sm:mt-16">
-        {{- block "main" . }}{{- end }}
-    </main>
-    {{- partial "footer.html" . -}}
-</body>
-
+      {{/*  =============== Footer block =====================  */}}
+      {{ block "footer" . }}
+        {{ partial "navigation/footer.html" . }}
+      {{end}}
+      {{/*  ============== Mandatory scripts =================  */}}
+      {{ partial "scripts.html" . }}
+  </body>
 </html>

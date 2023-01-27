@@ -1,0 +1,66 @@
+{{ $currentPage:= . }}
+{{ partial "navigation/breadcrumb.html" . }}
+<div class="flex">
+    <div class="basis-1/4 print:hidden">
+        <aside class="ml-auto px-4 py-2 border-r h-screen">
+            <div class="w-72 ml-auto sticky top-20 text-lg font-bold text-gray-700">
+                <h1 class="text-white hover:text-white bg-cyan-500 title-text  pl-2">In this series</h1>
+                <ul class="p-2 pt-1 font-normal bg-slate-100">
+                    {{ range where .Pages "BundleType" "leaf"}}
+                        {{$post:= slice "my-2 pl-2 w-full hover:text-cyan-500"}}
+                        {{ if eq $currentPage . }}
+                            {{$post = $post | append "text-cyan-500"}}
+                        {{ end }}
+                        <li class="{{delimit $post " "}}"><a href="{{.RelPermalink}}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <div class="basis-2/4 bg-white">
+        <div class="flex-auto">
+            <div class="m-6 text-5xl text-cyan-800">
+            <h1>{{ .Title }}</h1>
+            </div>
+            
+            <article class="m-6 max-w-none prose prose-lg">
+            {{ .Content }}
+            <section class="w-full">
+                <div class="w-full inline-flex item-center justify-between">
+                    <h1 class="pt-3 text-2xl text-gray-600 mb-2">In this series</h1>
+                    <div class="inline-flex">
+                        <div class="inline-flex item-center text-gray-600 mr-4">
+                            <i class="w-4 h-4 m-auto" data-feather="layers"></i>
+                            <h5 class="ml-2 text-sm m-auto">{{ len .RegularPagesRecursive }} posts total</h5>
+                        </div>
+                        {{ $firstPage := index .RegularPagesRecursive 0}}
+                        <a href="{{ $firstPage.RelPermalink }}" class="h-8 w-20 self-center text-center text-white hover:text-white bg-cyan-500 hover:bg-cyan-600 hover:text-white rounded p-0 no-underline">Start</a>
+                    </div>
+                </div>
+                <div class="pb-3 flex flex-wrap flex-r justify-center md:flex-row lg:justify-start">
+                  {{ range .RegularPagesRecursive }}
+                    {{ partial "components/cards/series-post.html" . }}
+                  {{ end }}
+                </div>
+            </section>
+            
+            <div class="inline-flex item-center print:hidden">
+                <h4 class="text-normal my-auto">Share On:</h4>
+                <a href="{{ $firstPage.RelPermalink }}" class="h-8 w-8 mx-1 self-center flex text-white hover:text-white bg-cyan-500 hover:bg-cyan-600 hover:text-white rounded no-underline">
+                    <i data-feather="facebook" class="w-6 h-6 self-center mx-auto"></i>
+                </a>
+                <a href="{{ $firstPage.RelPermalink }}" class="h-8 w-8 mx-1 self-center flex text-white hover:text-white bg-cyan-500 hover:bg-cyan-600 hover:text-white rounded no-underline">
+                    <i data-feather="twitter" class="w-6 h-6 self-center mx-auto"></i>
+                </a>
+                <a href="{{ $firstPage.RelPermalink }}" class="h-8 w-8 mx-1 self-center flex text-white hover:text-white bg-cyan-500 hover:bg-cyan-600 hover:text-white rounded no-underline">
+                    <i data-feather="linkedin" class="w-6 h-6 self-center mx-auto"></i>
+                </a>
+            </div>
+            </article>
+        </div>
+    </div>
+    <div class="basis-1/4 print:hidden">
+
+    </div>
+</div>

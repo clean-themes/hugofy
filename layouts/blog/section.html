@@ -1,0 +1,18 @@
+{{ define "main" }}
+<script>
+  console.log("==========================")
+  console.log("{{.CurrentSection }}")
+  console.log("{{.Type }}")
+  console.log("{{.Section}}")
+  console.log("==========================")
+</script>
+  {{ if eq .CurrentSection .FirstSection }}
+    {{ partial "blog/homepage.html" . }}
+  {{ else if (eq .Type "subject") }}
+    {{ partial "blog/subject.html" . }}
+  {{ else if (eq .Type "topic") }}
+    {{ partial "blog/topic.html" . }}
+  {{ else if (eq .Type "series") }}
+    {{ partial "blog/series.html" . }}
+  {{ end }}
+{{ end }}

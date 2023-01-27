@@ -1,0 +1,76 @@
+<div class="ml-4 inline-flex fixed top-[95vh] print:hidden right-0">
+    <button type="button" class="bg-white text-gray-400 border border-gray-300 hover:bg-cyan-500 hover:text-white rounded-lg text-sm p-1.5 text-center inline-flex items-center mr-2">
+        <i data-feather="git-pull-request" class="w-6 h-6"></i>
+    </button>
+    <button type="button" class="bg-white text-gray-400 border border-gray-300 hover:bg-cyan-500 hover:text-white rounded-lg text-sm p-1.5 text-center inline-flex items-center mr-2">
+        <i data-feather="alert-circle" class="w-6 h-6"></i>
+    </button>
+    <button type="button" class="bg-white text-gray-400 border border-gray-300 hover:bg-cyan-500 hover:text-white rounded-lg text-sm p-1.5 text-center inline-flex items-center mr-2" onclick="window.print()">
+        <i data-feather="printer" class="w-6 h-6"></i>
+    </button>
+    <button type="button" class="bg-white text-gray-400 border border-gray-300 hover:bg-cyan-500 hover:text-white rounded-lg text-sm p-1.5 text-center inline-flex items-center mr-2" onclick="toggleReadingMode()" id="reading-mode-toggler">
+        <i data-feather="maximize" class="w-6 h-6"></i>
+    </button>
+    <button type="button" class="bg-white text-gray-400 border border-gray-300 hover:bg-cyan-500 hover:text-white rounded-lg text-sm p-1.5 text-center inline-flex items-center mr-2" onclick="scrollToTop()">
+        <i data-feather="arrow-up" class="w-6 h-6"></i>
+    </button>
+</div>
+
+<script>
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+
+    function toggleReadingMode(){
+       toggleNavbarVisibility();
+       toggleBreadcrumbVisibility();
+       toggleLeftSidebarVisibility();
+       toggleRightSidebarVisibility();
+       changeReadingModeTogglerIcon();
+    }
+
+    function toggleNavbarVisibility(){
+        let navbar = document.getElementById("top-navbar")
+        if (navbar){
+            navbar.classList.toggle("mt-0");
+            navbar.classList.toggle("-mt-16");
+        }
+    }
+
+    function toggleBreadcrumbVisibility(){
+        let breadcrumb = document.getElementById("breadcrumb")
+        if (breadcrumb){
+            breadcrumb.classList.toggle("mt-16");
+            breadcrumb.classList.toggle("-mt-16");
+        }
+    }
+
+    function toggleLeftSidebarVisibility(){
+        let sidebar = document.getElementById("left-sidebar");
+        if (sidebar){
+            sidebar.classList.toggle("left-0");
+            sidebar.classList.toggle("-left-[150rem]");
+
+        }
+    }
+
+    function toggleRightSidebarVisibility(){
+        let toc = document.getElementById("right-sidebar");
+        if (toc){
+            toc.classList.toggle("-right-[150rem]");
+        }
+    }
+
+    function changeReadingModeTogglerIcon(){
+        let readingModeToggler = document.getElementById("reading-mode-toggler");
+        if (readingModeToggler){
+            if (readingModeToggler.innerHTML.includes("maximize")){
+                readingModeToggler.innerHTML = '<i data-feather="minimize" class="w-6 h-6"></i>';
+            } else {
+                readingModeToggler.innerHTML = '<i data-feather="maximize" class="w-6 h-6"></i>';
+            }
+            feather.replace();
+        }
+    }
+</script>

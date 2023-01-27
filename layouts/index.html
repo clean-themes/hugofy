@@ -1,6 +1,10 @@
 {{ define "main" }}
-<article class="text-center text-gray-700">
-    <h1 class="font-serif font-extralight text-5xl welcome-headline">{{ .Title }}</h1>
-    {{ .Content }}
-</article>
+
+{{ partial "portfolio/introduction.html" . }}
+
+{{ partial "portfolio/tech-skills.html" . }}
+
+{{ partial "portfolio/experiences.html" . }}
+
+{{ partial "portfolio/recent-posts.html" . }}
 {{ end }}
