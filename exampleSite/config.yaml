@@ -1,4 +1,4 @@
-baseURL: http://example.org/
+baseURL: https://hugofy.netlify.app/
 languageCode: en-us
 title: Example Site
 disableKinds: ["taxonomy","taxonomyTerm"]
