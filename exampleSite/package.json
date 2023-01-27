@@ -1,10 +1,30 @@
 {
   "comments": {
     "dependencies": {},
-    "devDependencies": {}
+    "devDependencies": {
+      "@tailwindcss/aspect-ratio": "github.com/hugofy/hugofy",
+      "@tailwindcss/forms": "github.com/hugofy/hugofy",
+      "@tailwindcss/line-clamp": "github.com/hugofy/hugofy",
+      "@tailwindcss/typography": "github.com/hugofy/hugofy",
+      "autoprefixer": "github.com/hugofy/hugofy",
+      "concurrently": "github.com/hugofy/hugofy",
+      "postcss": "github.com/hugofy/hugofy",
+      "postcss-cli": "github.com/hugofy/hugofy",
+      "tailwindcss": "github.com/hugofy/hugofy"
+    }
   },
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.x",
+    "@tailwindcss/forms": "^0.x",
+    "@tailwindcss/line-clamp": "^0.x",
+    "@tailwindcss/typography": "^0.5.x",
+    "autoprefixer": "^10.4.13",
+    "concurrently": "^7.x",
+    "postcss": "^8.x",
+    "postcss-cli": "^10.0.0",
+    "tailwindcss": "^3.x"
+  },
   "name": "exampleSite",
   "version": "0.1.0"
 }
