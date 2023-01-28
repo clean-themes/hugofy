@@ -1,17 +1,93 @@
-<section>
+<section class="text-gray-600 body-font">
+    <div class="container px-5 py-10 mx-auto flex">
+      {{ $experiences:= site.Data.portfolio.experiences.experiences }}
+      <div class="basis-1/4">
+        <aside class="w-72 px-4 py-2 border-r ml-auto sticky top-20">
+          <ul class="text-lg font-bold" id="experiences">
+            {{ range $experiences }}
+                {{ $company:= .company }}
+                {{ range .positions }}
+                    <li class="my-2 pl-2">
+                        <a href="#{{urlize .name }}">
+                            <h3 class="text-xl">{{.name}}</h3>
+                            <a class="text" href="{{$company.url}}">{{$company.name}}</a>
+                            <h5 class="text-sm subtitle">{{.start}} -  {{.end}} ({{.duration}})</h5>
+                        </a>
+                    </li>
+                {{ end }}
+            {{ end }}
+          </ul>
+        </aside>
+      </div>
+      <div class="grow pl-4">
+        {{ range $experiences }}
+            {{ range .positions }}
+            <div id="{{urlize .name }}" class="mb-4">
+              <div class="pb-3 flex flex-wrap flex-col justify-center md:flex-row lg:justify-start -m-4">
+                <ul class="">
+                    <h5 class="text-xl">My Contributions</h5>
+                    {{ range .contributions }}
+                      <li>{{.}}</li>
+                    {{ end }}
+                </ul>
+              </div>
+            </div>
+            {{ end }}
+        {{ end }}
+      </div>
+    </div>
+
+  {{/*
+  =============== Scroll Spy for recent post section ============
+        Ref: https://github.com/cferdinandi/gumshoe
+  ===========================================================
+  */}}
+  {{ $js:= resources.Get "js/gumshoe.polyfills.min.js"}}
+  <script src="{{$js.RelPermalink}}"></script>
+    <script>
+      var spy = new Gumshoe('#experiences a',{
+
+        // Active classes
+        navClass: 'nav-active', // applied to the nav list item
+        contentClass: 'active', // applied to the content
+      
+        // Nested navigation
+        nested: false, // if true, add classes to parents of active link
+        nestedClass: 'child-active', // applied to the parent items
+      
+        // Offset & reflow
+        offset: 120, // how far from the top of the page to activate a content area
+        reflow: false, // if true, listen for reflows
+      
+        // Event support
+        events: false // if true, emit custom events
+      
+      });
+    </script>
+</section>
+
+{{/*  <section>
     <div class="container px-5 py-10 mx-auto">
         <div class="flex flex-col text-center w-full mb-10">
           <h1 class="sm:text-3xl text-2xl font-medium title-font text-gray-900">Experiences</h1>
         </div>
-        <div class="pb-3 flex flex-wrap flex-col justify-center md:flex-row lg:justify-start -m-4 bg-red-300">
-            <div class="flex flex-col w-96 bg-yellow-500">
-                <ul class="">
-                    <li>
-                        <h3>Lead Software Engineer</h3>
-                    </li>
-                    <li>
-                        <h3>Software Engineer</h3>
-                    </li>
+        <div class="pb-3 flex flex-wrap flex-col justify-center md:flex-row lg:justify-start -m-4 bg-red-100">
+            <div class="flex flex-col w-96">
+               <ul class="text-lg font-bold" id="experiences">
+                {{ range $key,$experience:=site.Data.portfolio.experiences.experiences }}
+                    {{$company:=.company}}
+                    {{ range .positions }}
+                        <li class="my-2 pl-2">
+                            <a href="#{{urlize .name }}">
+                                <div>
+                                    <h3>{{.name}}</h3>
+                                    <a href="{{$company.url}}">{{$company.name}}</a>
+                                    <h5>{{.start}} - {{.end}} ({{.duration}})</h5>
+                                </div>
+                            </a>
+                        </li>
+                    {{end}}
+                {{ end }}
                 </ul>
             </div>
             <div class="flex flex-auto bg-blue-500">
@@ -19,4 +95,4 @@
             </div>
         </div>
       </div>
-</section>
+</section>  */}}

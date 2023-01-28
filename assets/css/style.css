@@ -1797,6 +1797,10 @@ select {
   width: 4rem;
 }
 
+.w-9 {
+  width: 2.25rem;
+}
+
 .max-w-none {
   max-width: none;
 }
@@ -2163,6 +2167,11 @@ select {
 .bg-red-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+.bg-red-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-25 {
