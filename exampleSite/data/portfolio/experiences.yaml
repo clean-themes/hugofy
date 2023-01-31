@@ -7,6 +7,7 @@ experiences:
     start: Jan 2021
     end: Present
     duration: 2yrs1mo+
+    summary: I was promoted to Lead Software Engineer role from January 2021. In this role, I was responsible for taking architectural decision of Stash product as well as managing the team. I have also closely worked with Frontend and Backend team on building ByteBuilders platform.
     contributions:
     - Lead Stash (a disaster recovery solution for Kubernetes) team.
     - Re-architected Stash to make it extensible via plugins that made more than 10’s different databases and apps backup possible.
@@ -18,6 +19,7 @@ experiences:
     start: Nov 2017
     end: Dec 2020
     duration: 3yrs2mo
+    summary: I start my career as a Software Engineer at late 2017. In this role, initially I have worked to KubeDB database operator. Later, I start working on another project called Stash which is a disaster recovery solution for Kubernetes.
     contributions:
     - Introduced auto-backup in Stash that enabled support for pre-configured policy-based backup.
     - Added monitoring support in Stash. It enables alerting based on backup and restore metrics.
