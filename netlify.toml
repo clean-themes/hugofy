@@ -1,6 +1,6 @@
 [build]
 command = "hugo mod tidy && hugo mod npm pack && npm install && hugo --gc --minify --enableGitInfo"
-publish = "exampleSite/public"
+publish = "public"
 
 [context.production.environment]
 HUGO_ENABLEGITINFO = "true"
